@@ -1,2 +1,4 @@
-﻿var bang = Bang.Core.Bang.MainGame;
+﻿using BangServer.Server;
+
+var bang = new Server();
 bang.Initialize();

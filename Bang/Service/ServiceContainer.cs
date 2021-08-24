@@ -47,10 +47,10 @@ public class ServiceContainer : IServiceProvider, IServiceRegistry
     {
         var type = typeof(Interface);
         var entry = this[type];
-        if (entry.RegisterType != RegisterType.None)
-        {
-            throw new ServiceBeAlreadyRegisteredException(type.ToString());
-        }
+        /*  if (entry.RegisterType != RegisterType.None)
+          {
+              throw new ServiceBeAlreadyRegisteredException(type.ToString());
+          }*/
         entry.Instance = new Clz();
         entry.RegisterType = RegisterType.Singleton;
     }
@@ -79,10 +79,10 @@ public class ServiceContainer : IServiceProvider, IServiceRegistry
     {
         var type = typeof(Interface);
         var entry = this[type];
-        if (entry.RegisterType != RegisterType.None)
-        {
-            throw new ServiceBeAlreadyRegisteredException(type.ToString());
-        }
+        /* if (entry.RegisterType != RegisterType.None)
+         {
+             throw new ServiceBeAlreadyRegisteredException(type.ToString());
+         }*/
         entry.RegisterType = RegisterType.Transient;
     }
 
@@ -90,10 +90,10 @@ public class ServiceContainer : IServiceProvider, IServiceRegistry
     {
         var type = typeof(Clz);
         var entry = this[type];
-        if (entry.RegisterType != RegisterType.None)
-        {
-            throw new ServiceBeAlreadyRegisteredException(type.ToString());
-        }
+        /* if (entry.RegisterType != RegisterType.None)
+         {
+             throw new ServiceBeAlreadyRegisteredException(type.ToString());
+         }*/
         entry.Instance = obj;
         entry.RegisterType = RegisterType.Instance;
     }

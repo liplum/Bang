@@ -4,6 +4,9 @@ using Bang.Settings;
 namespace Bang.Core;
 public class Bang
 {
+    public delegate void ServiceRegisterHandler(IServiceRegistry registry);
+    public event ServiceRegisterHandler? ServiceRegisterEvent;
+
     internal Bang()
     {
 
@@ -17,6 +20,7 @@ public class Bang
     private readonly ServiceContainer _serviceContainer = new();
     private readonly SettingService _settingService = new();
     //private II18nLoadService? _I18NLoadService;
+    private ILoggerService? _loggerService;
 
     public void Initialize()
     {
@@ -31,6 +35,11 @@ public class Bang
         _serviceContainer.RegisterSingleton<II18nLoadService, I18nLoadService>();
         _serviceContainer.RegisterSingleton<IResourceMangaer, ResourceMangaer>();
         _serviceContainer.RegisterInstance<ISettingService>(_settingService);
+
+        ServiceRegisterEvent?.Invoke(_serviceContainer);
+
+        _loggerService = _serviceContainer.Reslove<ILoggerService>();
+        _loggerService?.SendMessage("Service Component is Initialized successfully.");
     }
 
     private void LoadAllSettings()
