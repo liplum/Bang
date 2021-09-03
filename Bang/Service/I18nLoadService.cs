@@ -3,7 +3,7 @@
 namespace Bang.Services;
 public class I18nLoadService : II18nLoadService
 {
-    private IResourceMangaer? _resourceMangaer;
+    private IResourceManager? _resourceMangaer;
 
     public I18nLoadService()
     {
@@ -12,7 +12,7 @@ public class I18nLoadService : II18nLoadService
 
     public void Initialize(IServiceProvider serviceProvider)
     {
-        _resourceMangaer = serviceProvider.Reslove<IResourceMangaer>();
+        _resourceMangaer = serviceProvider.Reslove<IResourceManager>();
     }
 
     public void Load()
