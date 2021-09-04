@@ -2,3 +2,4 @@
 
 var bang = new Server();
 bang.Initialize();
+bang.Game!.LoadMods();

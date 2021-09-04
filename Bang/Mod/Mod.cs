@@ -1,11 +1,17 @@
 ﻿namespace Bang.Mods;
 public class Mod
 {
-    public FileInfo? Path
+    public ModInfo? Info
     {
         get; set;
     }
-    public string? Name
+
+    public DirectoryInfo? Folder
+    {
+        get; set;
+    }
+
+    public FileInfo? ModFile
     {
         get; set;
     }

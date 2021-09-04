@@ -20,4 +20,14 @@ public interface IResourceManager : IInjectable
     {
         get;
     }
+
+    public DirectoryInfo RuntimeFolder
+    {
+        get;
+    }
+
+    public DirectoryInfo BangRootFolder
+    {
+        get;
+    }
 }

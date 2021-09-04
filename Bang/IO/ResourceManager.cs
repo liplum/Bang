@@ -13,13 +13,17 @@ public class ResourceManager : IResourceManager
         get
         {
             var lang = _settingService!.GetSetting<string>(AllSettings.Language);
-            return new("./Resources/Bang/Lang/" + lang + ".json");
+            return new(".\\Resources\\Bang\\Lang\\" + lang + ".json");
         }
     }
 
-    public FileInfo SettingsFile => new("./settings.json");
+    public FileInfo SettingsFile => BangRootFolder.GetOrCreateSubFile("settings.json");
 
-    public DirectoryInfo ModsFolder => new DirectoryInfo($".\\{Names.ModsFolderName}").GetOrCreate();
+    public DirectoryInfo ModsFolder => BangRootFolder.GetOrCreateSubFolder(Names.ModsFolderName);
+
+    public DirectoryInfo RuntimeFolder => BangRootFolder.GetOrCreateSubFolder(Names.RuntimeFolderName);
+
+    public DirectoryInfo BangRootFolder => new(".\\");
 
     public void Initialize(IServiceProvider serviceProvider)
     {

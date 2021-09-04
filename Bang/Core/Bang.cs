@@ -1,5 +1,6 @@
 ﻿using Bang.Services;
 using Bang.Settings;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Bang.Core;
 public class Bang
@@ -17,11 +18,17 @@ public class Bang
         get;
     } = new();
 
+    public bool Initialized
+    {
+        get; private set;
+    } = false;
+
     private readonly ServiceContainer _serviceContainer = new();
     private readonly SettingService _settingService = new();
     //private II18nLoadService? _I18NLoadService;
     private IResourceManager? _resourceManager;
     private ILoggerService? _loggerService;
+    private IModManager? _modManager;
 
     public void Initialize()
     {
@@ -38,23 +45,36 @@ public class Bang
 
         void LoadAllMods()
         {
-            foreach (var modPack in from file in modsFolder.GetFiles() where file.Name.EndsWith(Names.ModPackDotSuffix) select file)
+            foreach (var modPack in from file in modsFolder.GetFiles() where file.Name.EndsWith(Names.ModPackExtension) select file)
             {
-
+                LoadMod(modPack);
             }
         }
+    }
+
+    public void LoadMod([NotNull] FileInfo modFile)
+    {
+        _modManager!.LoadMod(modFile);
+    }
+
+    public void Close()
+    {
+        _resourceManager!.RuntimeFolder.Delete(true);
     }
 
     private void RegisterServices()
     {
         _serviceContainer.RegisterSingleton<II18nLoadService, I18nLoadService>();
         _serviceContainer.RegisterSingleton<IResourceManager, ResourceManager>();
+        _serviceContainer.RegisterSingleton<IModManager, ModManager>();
         _serviceContainer.RegisterInstance<ISettingService>(_settingService);
 
         ServiceRegisterEvent?.Invoke(_serviceContainer);
 
         _loggerService = _serviceContainer.Reslove<ILoggerService>();
         _resourceManager = _serviceContainer.Reslove<IResourceManager>();
+        _modManager = _serviceContainer.Reslove<IModManager>();
+
         _loggerService?.SendMessage("Service Component is Initialized successfully.");
     }
 
