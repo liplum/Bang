@@ -20,24 +20,6 @@ public class ModList
         return removedCount >= 1;
     }
 
-    public static ModList operator +([NotNull] ModList list, Mod mod)
-    {
-        list.Add(mod);
-        return list;
-    }
-
-    public static ModList operator -([NotNull] ModList list, Mod mod)
-    {
-        list.Remove(mod);
-        return list;
-    }
-
-    public static ModList operator -([NotNull] ModList list, string modName)
-    {
-        list.Remove(modName);
-        return list;
-    }
-
     public bool HasMod([NotNull] string modName)
     {
         foreach (var mod in _mods)
