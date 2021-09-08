@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace Bang.IO;
+namespace BangLib.IO;
 public static class IoUtil
 {
     public static DirectoryInfo GetOrCreate([NotNull] this DirectoryInfo directory)
@@ -30,6 +30,12 @@ public static class IoUtil
         {
             subFile.Create().Close();
         }
+        return subFile;
+    }
+
+    public static FileInfo GetSubFile([NotNull] this DirectoryInfo directory, [NotNull] string subFileName)
+    {
+        var subFile = new FileInfo($"{directory.FullName}\\{subFileName}");
         return subFile;
     }
 }

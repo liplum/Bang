@@ -3,13 +3,13 @@
 namespace Bang.Mods;
 public class ModList
 {
-    private readonly HashSet<Mod> _mods = new();
-    public void Add([NotNull] Mod mod)
+    private readonly HashSet<ModEntry> _mods = new();
+    public void Add([NotNull] ModEntry mod)
     {
         _mods.Add(mod);
     }
 
-    public bool Remove([NotNull] Mod mod)
+    public bool Remove([NotNull] ModEntry mod)
     {
         return _mods.Remove(mod);
     }

@@ -1,6 +1,6 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using Bang.Cards;
-using Bang.Lib;
+﻿using Bang.Cards;
+using BangLib.Collections;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Bang.Game;
 public class Deck : IDeck
@@ -111,6 +111,6 @@ public class Deck : IDeck
     public override string? ToString()
     {
         var allNames = AllCards.Select(card => card.ToString()).ToList();
-        return $"[{string.Join(',',allNames)}]";
+        return $"[{string.Join(',', allNames)}]";
     }
 }

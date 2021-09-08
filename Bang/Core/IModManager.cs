@@ -7,7 +7,7 @@ public interface IModManager : IInjectable
 {
     public void LoadMod([NotNull] FileInfo modFile);
 
-    public void UnloadMod([NotNull] Mod mod);
+    public void UnloadMod([NotNull] ModEntry mod);
 
     public void UnloadMod([NotNull] string modName);
 }

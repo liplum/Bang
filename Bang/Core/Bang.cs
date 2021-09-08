@@ -59,6 +59,11 @@ public class Bang
 
     public void Close()
     {
+        DeleteRuntimeFolder();
+    }
+
+    public void DeleteRuntimeFolder()
+    {
         _resourceManager!.RuntimeFolder.Delete(true);
     }
 

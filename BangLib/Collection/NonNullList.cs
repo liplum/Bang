@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Bang.Lib;
+namespace BangLib.Collections;
 public class NonNullList<T> : IList<T> where T : notnull
 {
     [NotNull]

@@ -1,5 +1,5 @@
 ﻿namespace Bang.Mods;
-public class Mod
+public class ModEntry
 {
     public ModInfo? Info
     {

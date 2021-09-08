@@ -1,19 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <AppendTargetFrameworkToOutputPath>Flase</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="LinqOptimizer.CSharp" Version="0.7.0" />
-    <PackageReference Include="SharpZipLib" Version="1.3.2" />
+    <Folder Include="Render\" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BangLib\BangLib.csproj" />
     <ProjectReference Include="..\Bang\Bang.csproj" />
   </ItemGroup>
 

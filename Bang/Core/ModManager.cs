@@ -1,7 +1,6 @@
-﻿using Bang.IO;
-using Bang.Mods;
+﻿using Bang.Mods;
 using Bang.Services;
-using ICSharpCode.SharpZipLib.Zip;
+using BangLib.IO;
 using System.Diagnostics.CodeAnalysis;
 
 namespace Bang.Core;
@@ -24,32 +23,7 @@ public class ModManager : IModManager
 
         var modFileNameWithoutExtension = Path.GetFileNameWithoutExtension(modFilePath);
         var outputFolder = RecreateModRuntimeFolder(modFileNameWithoutExtension);
-        var outputFolderPath = outputFolder.FullName;
-
-        using var zipInputStream = new ZipInputStream(File.OpenRead(modFilePath));
-
-        foreach (var file in zipInputStream.Entries())
-        {
-            var pathInZip = file.Name;
-            var directoryPath = Path.GetDirectoryName(pathInZip);
-
-            var outFileName = Path.GetFileName(pathInZip);
-
-            Directory.CreateDirectory(outputFolderPath + "\\" + directoryPath);
-
-            using var streamWriter = File.Create(outputFolderPath + "\\" + directoryPath + "\\" + outFileName);
-            int size = 2048;
-            var data = new byte[2048];
-            while (true)
-            {
-                size = zipInputStream.Read(data, 0, data.Length);
-
-                if (size > 0)
-                    streamWriter.Write(data, 0, size);
-                else
-                    break;
-            }
-        }
+        ZipUtil.Unzip(modFile, outputFolder);
     }
 
     private DirectoryInfo RecreateModRuntimeFolder([NotNull] string modFileNameWithoutExtension)
@@ -64,7 +38,7 @@ public class ModManager : IModManager
         return modRuntime;
     }
 
-    public void UnloadMod([NotNull] Mod mod)
+    public void UnloadMod([NotNull] ModEntry mod)
     {
         throw new NotImplementedException();
     }

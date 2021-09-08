@@ -1,6 +1,6 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using Bang.Cards;
-using Bang.Lib;
+﻿using Bang.Cards;
+using BangLib.Collections;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Bang.Game;
 public interface IDeck
@@ -49,7 +49,8 @@ public interface IDeck
     /// Is this Deck Empty?
     /// </summary>
     /// <returns></returns>
-    public bool IsEmpty{
+    public bool IsEmpty
+    {
         get;
     }
 
@@ -83,7 +84,7 @@ public interface IDeck
     /// <param name="filter"></param>
     /// <param name="isForward">true means starting from the top<br/>false means starting from the bottom</param>
     /// <returns>the card</returns>
-    public ICard FindFirst([NotNull] Predicate<ICard> filter,bool isForward = true);
+    public ICard FindFirst([NotNull] Predicate<ICard> filter, bool isForward = true);
 
     /// <summary>
     /// Gets all card which meet the filter.

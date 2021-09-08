@@ -9,7 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BangServer", "BangServer\Ba
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BangTest", "BangTest\BangTest.csproj", "{6F8F6772-ADFE-49F1-9CB3-13A13B8C2EA7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BangModZipper", "BangModZipper\BangModZipper.csproj", "{852186E4-1C98-4DFD-A294-B1B9F2807E32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BangModZipper", "BangModZipper\BangModZipper.csproj", "{852186E4-1C98-4DFD-A294-B1B9F2807E32}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BangClient", "BangClient\BangClient.csproj", "{43FB923D-0AE8-4097-BF1D-52BBA4F5382E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BangLib", "BangLib\BangLib.csproj", "{4C2C9B51-8A03-45C7-9A03-FCCD60D2246B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{852186E4-1C98-4DFD-A294-B1B9F2807E32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{852186E4-1C98-4DFD-A294-B1B9F2807E32}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{852186E4-1C98-4DFD-A294-B1B9F2807E32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43FB923D-0AE8-4097-BF1D-52BBA4F5382E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43FB923D-0AE8-4097-BF1D-52BBA4F5382E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43FB923D-0AE8-4097-BF1D-52BBA4F5382E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43FB923D-0AE8-4097-BF1D-52BBA4F5382E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C2C9B51-8A03-45C7-9A03-FCCD60D2246B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C2C9B51-8A03-45C7-9A03-FCCD60D2246B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C2C9B51-8A03-45C7-9A03-FCCD60D2246B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C2C9B51-8A03-45C7-9A03-FCCD60D2246B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
