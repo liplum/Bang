@@ -2,7 +2,7 @@
 using BangLib.Collections;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Bang.Game;
+namespace Bang.Games;
 public interface IDeck
 {
     /// <summary>

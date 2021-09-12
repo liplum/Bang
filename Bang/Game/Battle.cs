@@ -1,4 +1,4 @@
-﻿namespace Bang.Game;
+﻿namespace Bang.Games;
 public class Battle
 {
 

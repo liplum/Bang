@@ -1,5 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using Bang.Game;
+using Bang.Games;
 
 namespace Bang.Actor;
 public interface ISkill
