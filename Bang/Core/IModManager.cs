@@ -1,6 +1,7 @@
 ﻿using Bang.Mods;
 using Bang.Services;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
 
 namespace Bang.Core;
 public interface IModManager : IInjectable

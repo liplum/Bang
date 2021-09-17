@@ -1,19 +1,21 @@
-﻿using Bang.Services;
+﻿using Bang.Networks;
+using Bang.Services;
 using Bang.Settings;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
 
 namespace Bang.Core;
-public class Bang
+public class BangGame
 {
     public delegate void ServiceRegisterHandler(IServiceRegistry registry);
     public event ServiceRegisterHandler? ServiceRegisterEvent;
 
-    internal Bang()
+    internal BangGame()
     {
 
     }
 
-    public static Bang MainGame
+    public static BangGame MainGame
     {
         get;
     } = new();
@@ -22,6 +24,11 @@ public class Bang
     {
         get; private set;
     } = false;
+
+    public Side ApplicationSide
+    {
+        get; init;
+    }
 
     private readonly ServiceContainer _serviceContainer = new();
     private readonly SettingService _settingService = new();
@@ -72,7 +79,9 @@ public class Bang
         _serviceContainer.RegisterSingleton<II18nLoadService, I18nLoadService>();
         _serviceContainer.RegisterSingleton<IResourceManager, ResourceManager>();
         _serviceContainer.RegisterSingleton<IModManager, ModManager>();
+        _serviceContainer.RegisterSingleton<INetwork, Network>();
         _serviceContainer.RegisterInstance<ISettingService>(_settingService);
+        _serviceContainer.RegisterInstance(this);
 
         ServiceRegisterEvent?.Invoke(_serviceContainer);
 
@@ -94,4 +103,9 @@ public class Bang
         var _I18NLoadService = _serviceContainer.Reslove<II18nLoadService>();
         _I18NLoadService.Load();
     }
+}
+
+public enum Side
+{
+    Server, Client
 }

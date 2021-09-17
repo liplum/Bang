@@ -1,7 +1,7 @@
 ﻿using Bang.Core;
 using Bang.Services;
 using BangServer.Services;
-using BangGame = Bang.Core.Bang;
+using BangGame = Bang.Core.BangGame;
 
 namespace BangServer.Server;
 public class Server

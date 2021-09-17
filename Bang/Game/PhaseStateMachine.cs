@@ -1,33 +1,35 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-namespace Bang.Games;
+﻿namespace Bang.Games;
 public class PhaseStateMachine
 {
-    [NotNull]
-    public readonly PhaseChain _phaseChain = new();
+    private readonly Stack<IPhaseChainManager> _phaseChains = new();
 
-    public int CurrentIndex
+    public IPhaseChainManager? CurrentPhaseChain
     {
-        get; private set;
+        get => _phaseChains.TryPeek(out var res) ? res : null;
     }
 
-    public void GotoNext()
+    public bool HasAnyPhaseChain
     {
-
+        get => _phaseChains.Count > 0;
     }
 
-    public int LeftoverPhaseCount
+    public bool IsCurrentPhaseChainEnd
     {
-        get => _phaseChain.Count - CurrentIndex;
+        get => CurrentPhaseChain?.IsEnd ?? true;
     }
 
-    public bool HasRest
+    public bool RemoveCurrent()
     {
-        get => LeftoverPhaseCount > 0;
+        if (HasAnyPhaseChain)
+        {
+            _phaseChains.Pop();
+        }
+        return false;
     }
 
-    public bool IsEnd
+    public void AddNewPhaseChain(IPhaseChainManager phaseChainManager)
     {
-        get => !HasRest;
+        _phaseChains.Push(phaseChainManager);
     }
+
 }
