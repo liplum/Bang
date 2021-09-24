@@ -5,16 +5,16 @@ using System.Diagnostics.CodeAnalysis;
 using System.Net.Sockets;
 
 namespace BangServer.Networks;
-public class SocketService : ICommunication
+public class SocketConnection : IConnection
 {
-    private readonly Dictionary<NetworkPositionToken, Socket> _allClient = new();
+    private readonly Dictionary<NetworkToken, Socket> _allClient = new();
 
     public void Initialize(IServiceProvider serviceProvider)
     {
 
     }
 
-    public void SendMessageTo([NotNull] NetworkPositionToken target, byte[] data)
+    public void SendMessageTo([NotNull] NetworkToken target, byte[] data)
     {
 
     }
@@ -24,7 +24,7 @@ public class SocketService : ICommunication
 
     }
 
-    public void Connet()
+    public void Connect()
     {
 
     }

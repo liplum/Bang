@@ -1,5 +1,18 @@
 ﻿namespace Bang.Networks;
-public interface IBuffer
+public interface IReadableBuffer
+{
+    public byte ReadByte();
+    public char ReadChar();
+    public short ReadShort();
+    public int ReadInt();
+    public long ReadLong();
+    public float ReadFloat();
+    public double ReadDouble();
+    public char[] ReadChars(int length);
+    public string ReadString(int length);
+    public byte[] ToByteArray();
+}
+public interface IWritableBuffer
 {
     public void WriteByte(byte b);
     public void WriteChar(char c);
@@ -10,17 +23,4 @@ public interface IBuffer
     public void WriteDouble(double d);
     public void WriteString(string str);
     public void WriteChars(char[] chars);
-
-    public byte ReadByte();
-    public char ReadChar();
-    public short ReadShort();
-    public int ReadInt();
-    public long ReadLong();
-    public float ReadFloat();
-    public double ReadDouble();
-    public char[] ReadChars(int length);
-
-    public string ReadString(int length);
-
-    public byte[] ToByteArray();
 }

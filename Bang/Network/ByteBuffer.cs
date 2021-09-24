@@ -1,5 +1,5 @@
 ﻿namespace Bang.Networks;
-public class ByteBuffer : IBuffer
+public class ByteBuffer : IReadableBuffer, IWritableBuffer
 {
     public byte ReadByte()
     {

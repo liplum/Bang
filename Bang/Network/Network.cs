@@ -7,12 +7,12 @@ namespace Bang.Networks;
 public class Network : INetwork
 {
     private readonly Dictionary<string, IMessageChannel> _allChannels = new();
-    private ICommunication? _network;
+    private IConnection? _network;
     private BangGame? _bang;
 
     public void Initialize(IServiceProvider serviceProvider)
     {
-        _network = serviceProvider.Reslove<ICommunication>();
+        _network = serviceProvider.Reslove<IConnection>();
         _bang = serviceProvider.Reslove<BangGame>();
     }
 
@@ -28,7 +28,7 @@ public class Network : INetwork
         return channel;
     }
 
-    private void SendMessage([NotNull] NetworkPositionToken target, [NotNull] IMessage msg)
+    private void SendMessage([NotNull] NetworkToken target, [NotNull] IMessage msg)
     {
         var buf = new ByteBuffer();
         msg.Serialize(buf);
@@ -40,6 +40,16 @@ public class Network : INetwork
         var buf = new ByteBuffer();
         msg.Serialize(buf);
         _network!.SendMessageToAll(buf.ToByteArray());
+    }
+
+    public void SendDatapackTo([NotNull] IDatapack datapack, [NotNull] NetworkToken token)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void RecevieDatapack([NotNull] IDatapack datapack)
+    {
+        throw new System.NotImplementedException();
     }
 
     private class MessageChannel : IMessageChannel
@@ -65,7 +75,7 @@ public class Network : INetwork
             get; init;
         }
 
-        public void SendMessage([NotNull] NetworkPositionToken target, [NotNull] IMessage msg)
+        public void SendMessage([NotNull] NetworkToken target, [NotNull] IMessage msg)
         {
             if (ChannelDirection.CanSend(Outter._bang!.ApplicationSide))
             {

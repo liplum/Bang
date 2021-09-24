@@ -1,7 +1,7 @@
 ﻿namespace Bang.Networks;
 public interface IMessage
 {
-    public void Serialize(IBuffer cahce);
+    public void Serialize(IReadableBuffer buffer);
 
-    public void Deserialize(IBuffer cache);
+    public void Deserialize(IWritableBuffer buffer);
 }

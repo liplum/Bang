@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace Bang.Networks;
 public interface IMessageChannel
 {
-    public void SendMessage([NotNull] NetworkPositionToken target, [NotNull] IMessage msg);
+    public void SendMessage([NotNull] NetworkToken target, [NotNull] IMessage msg);
     public void SendMessageToAll([NotNull] IMessage msg);
 
     public string ChannelName
