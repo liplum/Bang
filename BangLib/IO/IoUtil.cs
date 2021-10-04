@@ -38,4 +38,10 @@ public static class IoUtil
         var subFile = new FileInfo($"{directory.FullName}\\{subFileName}");
         return subFile;
     }
+
+    public static DirectoryInfo SetHidden([NotNull] this DirectoryInfo directory)
+    {
+        directory.Attributes |= FileAttributes.Hidden;
+        return directory;
+    }
 }

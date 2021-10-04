@@ -1,13 +1,25 @@
 ﻿using Bang.Services;
 using Bang.Settings;
+using Stateless;
 using System.Diagnostics.CodeAnalysis;
-using System.IO;
+using IServiceProvider = Bang.Services.IServiceProvider;
 
 namespace Bang.Core;
 public class BangGame
 {
     public delegate void ServiceRegisterHandler(IServiceRegistry registry);
     public event ServiceRegisterHandler? ServiceRegisterEvent;
+    private StateMachine<RunningPhase, RunningEvent> BangGameLifeCycle = new(RunningPhase.Uninitialized);
+
+    public enum RunningPhase
+    {
+        Uninitialized
+    }
+
+    public enum RunningEvent
+    {
+        Initialize
+    }
 
     internal BangGame()
     {
