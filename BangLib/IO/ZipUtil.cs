@@ -1,5 +1,8 @@
 ﻿using ICSharpCode.SharpZipLib.Zip;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
 
 namespace BangLib.IO;
 public static class ZipUtil

@@ -1,18 +1,23 @@
 ﻿using Bang.Core;
+using Bang.Networks;
 using Bang.Services;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Net.Sockets;
 
-namespace Bang.Networks;
+namespace BangServer.Networks;
 public class Network : INetwork
 {
     private readonly Dictionary<string, IMessageChannel> _allChannels = new();
-    private IConnection? _network;
+    private readonly Dictionary<NetworkToken, IConnection> _allConnections = new();
     private BangGame? _bang;
+    private Socket? ServerSocket
+    {
+        get; set;
+    }
 
     public void Initialize(IServiceProvider serviceProvider)
     {
-        _network = serviceProvider.Reslove<IConnection>();
         _bang = serviceProvider.Reslove<BangGame>();
     }
 
@@ -91,4 +96,25 @@ public class Network : INetwork
             }
         }
     }
+
+    public class SocketConnection : IConnection
+    {
+        public bool IsConnect => throw new System.NotImplementedException();
+
+        public bool Connect()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool Disconnect()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Send(IDatapack datapack)
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+
 }

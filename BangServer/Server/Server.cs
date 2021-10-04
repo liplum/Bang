@@ -1,5 +1,7 @@
 ﻿using Bang.Core;
+using Bang.Networks;
 using Bang.Services;
+using BangServer.Networks;
 using BangServer.Services;
 using BangGame = Bang.Core.BangGame;
 
@@ -15,8 +17,16 @@ public class Server
         Game.Initialize();
     }
 
+    private Network Network => new();
+
     private void ServerRegisterHanlder(IServiceRegistry registry)
     {
         registry.RegisterSingleton<ILoggerService, CmdServerLogger>();
+        registry.RegisterInstance<INetwork>(Network);
+    }
+
+    public void WaitForConnection()
+    {
+
     }
 }

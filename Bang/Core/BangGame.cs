@@ -1,5 +1,4 @@
-﻿using Bang.Networks;
-using Bang.Services;
+﻿using Bang.Services;
 using Bang.Settings;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
@@ -79,7 +78,6 @@ public class BangGame
         _serviceContainer.RegisterSingleton<II18nLoadService, I18nLoadService>();
         _serviceContainer.RegisterSingleton<IResourceManager, ResourceManager>();
         _serviceContainer.RegisterSingleton<IModManager, ModManager>();
-        _serviceContainer.RegisterSingleton<INetwork, Network>();
         _serviceContainer.RegisterInstance<ISettingService>(_settingService);
         _serviceContainer.RegisterInstance(this);
 
@@ -90,6 +88,11 @@ public class BangGame
         _modManager = _serviceContainer.Reslove<IModManager>();
 
         _loggerService?.SendMessage("Service Component is Initialized successfully.");
+    }
+
+    public IServiceProvider GetServiceProvider()
+    {
+        return _serviceContainer;
     }
 
     private void LoadAllSettings()
