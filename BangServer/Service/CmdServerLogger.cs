@@ -1,5 +1,6 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using Bang.Core;
+﻿using Bang.Core;
+using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace BangServer.Services;
 public class CmdServerLogger : ILoggerService

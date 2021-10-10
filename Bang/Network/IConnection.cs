@@ -10,5 +10,5 @@ public interface IConnection //: IInjectable
 
     public bool Disconnect();
 
-    public bool IsConnect { get; }
+    public bool IsConnected { get; }
 }

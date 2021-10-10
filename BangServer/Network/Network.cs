@@ -99,7 +99,7 @@ public class Network : INetwork
 
     public class SocketConnection : IConnection
     {
-        public bool IsConnect => throw new System.NotImplementedException();
+        public bool IsConnected => throw new System.NotImplementedException();
 
         public bool Connect()
         {
