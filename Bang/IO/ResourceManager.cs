@@ -21,7 +21,7 @@ public class ResourceManager : IResourceManager
 
     public DirectoryInfo ModsFolder => BangRootFolder.GetOrCreateSubFolder(Names.ModsFolderName);
 
-    public DirectoryInfo RuntimeFolder => BangRootFolder.GetOrCreateSubFolder(Names.RuntimeFolderName);
+    public DirectoryInfo RuntimeFolder => BangRootFolder.GetOrCreateSubFolder(Names.RuntimeFolderName).SetHidden();
 
     public DirectoryInfo BangRootFolder => new(".\\");
 
